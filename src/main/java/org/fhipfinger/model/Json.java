@@ -28,12 +28,13 @@ public class Json implements Persistence {
         Gson gson = new Gson();
         try (Reader reader = new FileReader("wordTrainer.json")) {
             WordTrainer temp = gson.fromJson(reader, WordTrainer.class);
+            System.out.println(temp);
 
             wordTrainer.setWordImageList(temp.getWordImageList());
             wordTrainer.setTotalAttempts(temp.getTotalAttempts());
             wordTrainer.setCorrectAttempts(temp.getCorrectAttempts());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -47,7 +48,7 @@ public class Json implements Persistence {
         try (Writer writer = new FileWriter("wordTrainer.json")){
             gson.toJson(wordTrainer, writer);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

@@ -1,5 +1,6 @@
 package org.fhipfinger.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,17 +11,17 @@ import java.util.Random;
  * @author Florian Hipfinger
  */
 public class WordTrainer {
-    List<WordImage> wordImageList;
-    int currentPair = -1;
-    int totalAttempts;
-    int correctAttempts;
-    private Persistence storage = new Json();
+    private List<WordImage> wordImageList;
+    private transient int currentPair = -1;
+    private int totalAttempts;
+    private int correctAttempts;
+    private transient Persistence storage = new Json();
 
     /**
      * WordTrainer constructor
      */
     public WordTrainer() {
-        storage.load(this);
+        wordImageList = new ArrayList<>();
     }
 
     /**
