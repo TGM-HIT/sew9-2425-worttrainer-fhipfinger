@@ -14,12 +14,13 @@ public class WordTrainer {
     int currentPair = -1;
     int totalAttempts;
     int correctAttempts;
+    private Persistence storage = new Json();
 
     /**
      * WordTrainer constructor
      */
     public WordTrainer() {
-
+        storage.load(this);
     }
 
     /**
@@ -107,5 +108,19 @@ public class WordTrainer {
             correctAttempts++;
         }
         return correct;
+    }
+
+    /**
+     * load method loads a wordTrainer from a file
+     */
+    public void load() {
+        this.storage.load(this);
+    }
+
+    /**
+     * store method loads a wordTrainer from a file
+     */
+    public void store() {
+        this.storage.store(this);
     }
 }
